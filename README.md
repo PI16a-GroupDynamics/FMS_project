@@ -14,7 +14,7 @@
 **В проекте предусмотрена справочная информация по работе с проргаммным продуктом.**
 
 ### Состав команды:
-* *Симакин В.Д.* - **TeamLead**
-* *Пахомов С.А.* - **Project Manager**
-* *Грузан  С.В.* - **Programmer**
-* *Ле 	Д.Х.* - **Programmer** 
+* *Симакин В.Д.* ([AHDdev](https://github.com/AHDdev)) - **TeamLead**
+* *Пахомов С.А.* ([SB9itoslab](https://github.com/SB9itoslab)) - **Project Manager**
+* *Грузан  С.В.* ([hizti](https://github.com/hizti)) - **Programmer**
+* *Ле 	Д.Х.* ([SecondSony](https://github.com/SecondSony)) - **Programmer** 
