@@ -18,10 +18,10 @@
     <div id="login_form_fields" class="col-6 mx-auto">
     <form>
   <div class="form-group">
-    <input type="text" class="form-control" id="login_input" placeholder="Логин...">
+    <input type="text" class="form-control border-dark" id="login_input" placeholder="Логин...">
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" id="password_input" placeholder="Пароль...">
+    <input type="password" class="form-control border-dark" id="password_input" placeholder="Пароль...">
   </div>
   <button type="submit" class="btn btn-outline-dark col-md-6 offset-md-3">Войти</button>
 </form>
