@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Система паспортного учета ФМС</title>
@@ -10,7 +10,7 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body class="container">
-  <div id="login_form_container" class="container">
+  <div id="login_form_container" class="container col-md-11">
     <div id="login_form_header" class="d-flex">
     <img id="login_form_logo" src="images/ufms.png" alt="Error" class="order-2 p-2">
     <p id="login_form_logo_text" class="align-self-center order-3 p-2 text-center">ПАСПОРТНЫЙ УЧЕТ ФЕДЕРАЛЬНАЯ МИГРАЦИОННАЯ СЛУЖБА</p>

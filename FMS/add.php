@@ -9,7 +9,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="container">
+<body class="container col-md-11">
     <?php
    require_once("includes/header_container.php");
    ?>
@@ -51,6 +51,10 @@
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-3 mt-2">Гражданство:</label>
 <input type="text" class="form-control col-md-9 border-dark" id="add_nationality">
+ </div>
+ <div class="form-group d-flex mt-3">
+ <label for="add_adress" class="col-md-3 mt-2">Адрес проживания:</label>
+<input type="text" class="form-control col-md-9 border-dark" id="add_adress">
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_document" class="col-md-4 mt-3">Удостоверение личности:</label>
