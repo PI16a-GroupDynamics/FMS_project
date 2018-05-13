@@ -1,5 +1,5 @@
-﻿<div id="left_menu_container" class="col-4" style="">
-<a href="#" id="left_menu_add" class="btn btn-outline-dark col p-2 mb-3">Добавить<img src="images/left_menu_plus.png" alt="err" class=""></a>
+<div id="left_menu_container" class="col-4" style="">
+<a href="/add.php" id="left_menu_add" class="btn btn-outline-dark col p-2 mb-3">Добавить<img src="images/left_menu_plus.png" alt="err" class=""></a>
 <form>
 <div class="input-group mb-3">
   <input type="text" class="form-control border-dark" placeholder="Поиск">
@@ -48,6 +48,6 @@
 </div>
 </div>
 </form>
-<a href="#" id="left_menu_log" class="btn btn-outline-dark col p-2 mb-3">Лог посещений<img src="images/left_menu_log.png" alt="err" class=""></a>
-<a href="#" id="left_menu_guide" class="btn btn-outline-dark col p-2 mb-3">Справка <img src="images/left_menu_guide.png" alt="err" class="ml-1"></a>
+<a href="/log.php" id="left_menu_log" class="btn btn-outline-dark col p-2 mb-3">Лог посещений<img src="images/left_menu_log.png" alt="err" class=""></a>
+<a href="/guide.php" id="left_menu_guide" class="btn btn-outline-dark col p-2 mb-3">Справка <img src="images/left_menu_guide.png" alt="err" class="ml-1"></a>
 </div>
