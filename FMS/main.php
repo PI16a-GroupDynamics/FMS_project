@@ -18,6 +18,7 @@
    require_once("includes/left_menu_container.php");
    ?>
    <div id="main_content" class="col-md-8 rounded border border-dark mb-3">
+   <div class="table-responsive">
    <table class="table table-hover">
   <thead>
     <tr>
@@ -25,6 +26,8 @@
       <th scope="col">Имя</th>
       <th scope="col">Фамилия</th>
       <th scope="col">Username</th>
+      <th scope="col">Дата регистр.</th>
+      <th scope="col">Дата регистр.</th>
       <th scope="col">Дата регистр.</th>
     </tr>
   </thead>
@@ -35,12 +38,7 @@
       <td>Otffffffffffffffto</td>
       <td>@mdo</td>
       <td>05.04.2018</td>
-    </tr>
-    <tr>
-      <td><img src="images/main_user_photo.png" class="rounded border border-dark img-thumbnail" alt="err"></td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <td>05.04.2018</td>
       <td>05.04.2018</td>
     </tr>
     <tr>
@@ -49,17 +47,32 @@
       <td>Thornton</td>
       <td>@fat</td>
       <td>05.04.2018</td>
+      <td>05.04.2018</td>
+      <td>05.04.2018</td>
     </tr>
     <tr>
       <td><img src="images/main_user_photo.png" class="rounded border border-dark img-thumbnail" alt="err"></td>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
+      <td>05.04.2018</td>
+      <td>05.04.2018</td>
+      <td>05.04.2018</td>
+    </tr>
+    <tr>
+      <td><img src="images/main_user_photo.png" class="rounded border border-dark img-thumbnail" alt="err"></td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>05.04.2018</td>
+      <td>05.04.2018</td>
       <td>05.04.2018</td>
     </tr>
     
+    
   </tbody>
 </table>
+</div>
    </div>
     
 </body>

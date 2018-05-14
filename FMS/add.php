@@ -37,13 +37,13 @@
  </div>
  <div class="input-group d-flex mt-3" >
 <p class="col-3 mb-3">Пол:</p>
-<div class="input-group col">
+<div class="input-group btn-group-toggle col">
 <div class="form-check form-check-inline mb-3">
-  <input class="form-check-input" type="checkbox" id="add_sex_m" value="option1">
+  <input class="form-check-input" name="sex_client" type="radio" id="add_sex_m" value="option1">
   <label class="form-check-label" for="add_sex_m">Мужской</label>
 </div>
 <div class="form-check form-check-inline mb-3">
-  <input class="form-check-input" type="checkbox" id="add_sex_w" value="option2">
+  <input class="form-check-input" name="sex_client" type="radio" id="add_sex_w" value="option2">
   <label class="form-check-label" for="add_sex_w">Женский</label>
 </div>
 </div>  
@@ -51,6 +51,14 @@
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-3 mt-2">Гражданство:</label>
 <input type="text" class="form-control col-md-9 border-dark" id="add_nationality">
+ </div>
+ <div class="form-group d-flex mt-3">
+ <label for="add_country" class="col-md-3 mt-2">Страна проживания:</label>
+<input type="text" class="form-control col-md-9 border-dark" id="add_country">
+ </div>
+ <div class="form-group d-flex mt-3">
+ <label for="add_city" class="col-md-3 mt-2">Город проживания:</label>
+<input type="text" class="form-control col-md-9 border-dark" id="add_city">
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_adress" class="col-md-3 mt-2">Адрес проживания:</label>
