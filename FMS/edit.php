@@ -20,16 +20,14 @@ if(isset($_POST['Add_citizen']))
   $Identification_id=$_POST['Identification_id'];
 
   $date_register=date("Y-m-d"); 
-//echo "UPDATE`citizen` SET `serial` ='".$serial."', `number`= ".$number.", `F_name` = '".$F_name."', `L_name` ='".$L_name."', `Patronymic`='".$Patronymic."', `Gender`=".$Gender.", `Date`='".$Date."', `Nationality`='".$Nationality."', `adress`='".$adress."', `Identification_id`=".$Identification_id.", `city_id`=".$city_id." WHERE id =".$id.")";
-
-  //$result = mysql_query("INSERT INTO `citizen`(`serial`, `number`, `F_name`, `L_name`, `Patronymic`, `Gender`, `Date`, `Nationality`, `adress`, `Identification_id`, `photo`, `date_register`, `city_id`) VALUES  ('".$serial."', ".$number.", '".$F_name."', '".$L_name."', '".$Patronymic."', ".$Gender.", '".$Date."', '".$Nationality."', '".$adress."', ".$Identification_id.", '".$photo."', '".$date_register."',".$city_id.")");
 }
 if ($_FILES['add_photo']['size']>0)
 {
-  echo "UPDATE `citizen` SET photo ='images/".$id.".png"."' WHERE id=".$id;
+
   copy($_FILES['add_photo']['tmp_name'], "images/".$id.".png");
-  mysqli_query($link, "UPDATE `citizen` photo ='images/".$id.".png"."' WHERE id=".$id);
+  mysqli_query($link, "UPDATE `citizen` SET photo ='images/".$id.".png"."' WHERE id=".$id);
 }
+    header('Location: ' . 'main.php');
 ?>
 <script>
 function MkHouseValues(index, name){
