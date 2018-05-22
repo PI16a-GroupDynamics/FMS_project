@@ -32,7 +32,7 @@ if ($_FILES['add_photo']['size']>0)//если выбрано изображен�
   copy($_FILES['add_photo']['tmp_name'],"images/".$last.".png");
 
 }
-
+header('Location: ' . 'main.php');
 }
 ?>
 <script>
