@@ -24,6 +24,7 @@ if ($_SESSION['loged_user']==0)//проверка на авторизацию
    require_once("includes/left_menu_container.php");
    ?>
    <div id="log_content" class="col-md-8 rounded border border-dark mb-3">
+   <div class="log_view_table_vertical mt-3 mb-3">
    <table class="table table-hover">
   <thead>
     <tr>
@@ -56,6 +57,7 @@ if ($_SESSION['loged_user']==0)//проверка на авторизацию
     
   </tbody>
 </table>
+</div>
    </div>
     
 </body>
