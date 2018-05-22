@@ -1,7 +1,7 @@
 <?php
 include_once('includes/connect.php');//подключеение к БД
   if ($_SESSION['loged_user']==0)//проверка на авторизацию
-    header('Location: ' . 'login.php');
+header('Location: ' . 'login.php');
   if(isset($_POST['Sorted']))//Сортировка
   {
     if(isset($_POST['M']))
@@ -59,6 +59,7 @@ include_once('includes/connect.php');//подключеение к БД
    require_once("includes/left_menu_container.php");
    ?>
    <div id="main_content" class="col-md-8 rounded border border-dark mb-3">
+   <div class="table-responsive main_view_table_vertical mt-3 mb-3">
    <table class="table table-hover">
   <thead>
     <tr>
@@ -82,7 +83,7 @@ include_once('includes/connect.php');//подключеение к БД
           $photo = "images/default.png";
         else
           $photo=$row[0];
-      echo '<tr onclick=location.href="user.php?id='.$row[9].'"> <td>  <img src="'.$photo.'" class="rounded border border-dark img-thumbnail" width="75" height="75" alt="err"></td>';
+      echo '<tr onclick=location.href="user.php?id='.$row[9].'" class="hover_cursor_class"> <td>  <img src="'.$photo.'" class="rounded border border-dark img-thumbnail" width="75" height="75" alt="err"></td>';
       echo "<td>".$row[1]."</td>";
       echo "<td>".$row[2]."</td>";  
       echo "<td>".$row[3]." </td>";
@@ -100,6 +101,7 @@ include_once('includes/connect.php');//подключеение к БД
     
   </tbody>
 </table>
+</div>
    </div>
     
 </body>

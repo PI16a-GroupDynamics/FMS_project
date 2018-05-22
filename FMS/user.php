@@ -21,14 +21,18 @@
    <div class="" >
    <img src="images/user_user_photo.png" alt="err" class="img-thumbnail float-right">
    <p class="ml-3 mt-4 p-1 col-md-4"><b>Фамилия:</b> Тестовая_фамилия</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> Имя: Тестовое_имя</p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> Тестовое_имя</p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Отчество:</b> Тестовое_отчество</p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Дата рождения:</b> 08.06.2008</p> <!--Добавлено-->
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Пол:</b> Мужской</p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Гражданство:</b> Казах</p>
-   <p class="ml-3 mt-2 p-1 col-md-12"><b>Адрес проживания:</b> Казахстан, улицафылоыврпоф, районфыдоарвыпывопл, дом54, кв54</p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Страна:</b> Россия</p><!--Добавлено-->
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Город:</b> Москва</p><!--Добавлено-->
+   <p class="ml-3 mt-2 p-1 col-md-12"><b>Адрес проживания:</b> улицафылоыврпоф, районфыдоарвыпывопл, дом54, кв54</p>
    <p class="ml-3 mt-2 p-1 col-md-6"><b>Удостоверение личности:</b> Паспорт</p>
    <p class="ml-3 mt-2 p-1 col-md-2"><b>Серия:</b> AH</p>
-   <p class="ml-3 mt-2 p-1 col-md-3 mb-3"><b>Номер:</b> 547645</p>
+   <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> 547645</p>
+   <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> 21.05.2018</p><!--Добавлено-->
    <div class="d-flex mb-3">
    <button type="submit" class="btn btn-outline-dark col-md-3">Изменить</button>
    <button type="submit" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</button>

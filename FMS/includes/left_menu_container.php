@@ -73,7 +73,7 @@ function MkHouseValues(index, name){
 
 </select>
 </div>
-<button type="submit" name="Sorted" class="btn btn-outline-dark col-md-6 offset-md-3 mb-3">Сортировать</button>
+<button type="submit" name="Sorted" class="btn btn-outline-dark col-md-8 offset-md-2 mb-3">Сортировать</button>
 </div>
 
 </form>
