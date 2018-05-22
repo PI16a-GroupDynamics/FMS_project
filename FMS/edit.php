@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once('includes/connect.php');
 
   if ($_SESSION['loged_user']==0)//проверка на авторизацию
@@ -20,7 +20,9 @@ if(isset($_POST['Add_citizen']))
   $Identification_id=$_POST['Identification_id'];
 
   $date_register=date("Y-m-d"); 
+//echo "UPDATE`citizen` SET `serial` ='".$serial."', `number`= ".$number.", `F_name` = '".$F_name."', `L_name` ='".$L_name."', `Patronymic`='".$Patronymic."', `Gender`=".$Gender.", `Date`='".$Date."', `Nationality`='".$Nationality."', `adress`='".$adress."', `Identification_id`=".$Identification_id.", `city_id`=".$city_id." WHERE id =".$id.")";
 
+  //$result = mysql_query("INSERT INTO `citizen`(`serial`, `number`, `F_name`, `L_name`, `Patronymic`, `Gender`, `Date`, `Nationality`, `adress`, `Identification_id`, `photo`, `date_register`, `city_id`) VALUES  ('".$serial."', ".$number.", '".$F_name."', '".$L_name."', '".$Patronymic."', ".$Gender.", '".$Date."', '".$Nationality."', '".$adress."', ".$Identification_id.", '".$photo."', '".$date_register."',".$city_id.")");
 }
 if ($_FILES['add_photo']['size']>0)
 {
@@ -69,8 +71,7 @@ function MkHouseValues(index, name){
    ?>
    <div id="add_content" class="col-md-8 rounded border border-dark mb-3">
  <form method ="POST" enctype="multipart/form-data" name="add">
-  <?php //заполнение полей
-  $result = mysqli_query($link, "SELECT F_name, L_name, Patronymic, Gender, Date, Nationality, countries.id, cities.id, adress, Identification_id, serial, number, citizen.id  FROM `citizen` LEFT JOIN cities ON cities.id=citizen.city_id LEFT JOIN countries ON countries.id=cities.country_id WHERE citizen.id=".$_GET['id']);
+  <?php $result = mysqli_query($link, "SELECT F_name, L_name, Patronymic, Gender, Date, Nationality, countries.id, cities.id, adress, Identification_id, serial, number, citizen.id  FROM `citizen` LEFT JOIN cities ON cities.id=citizen.city_id LEFT JOIN countries ON countries.id=cities.country_id WHERE citizen.id=".$_GET['id']);
   $row=mysqli_fetch_array($result);
    ?>
  <div class="form-group d-flex mt-3" >

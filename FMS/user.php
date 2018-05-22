@@ -1,3 +1,20 @@
+<?php
+include_once('includes/connect.php');
+
+if ($_SESSION['loged_user']==0) {//проверка на авторизацию
+  header('Location: ' . 'login.php');
+  exit();
+}
+// Запрос на получение информации о клиенте
+$query = mysqli_query($link,
+  "SELECT serial, number, F_name, L_name, patronymic, gender, Date, nationality, adress, date_register, photo, identification.value AS iden, cities.value AS city, countries.value AS country
+FROM citizen, cities, countries, identification
+WHERE citizen.id = " . $_GET['id'] . " and identification.id = citizen.identification_id and citizen.city_id = cities.id and cities.country_id = countries.id");
+
+$citizen = mysqli_fetch_assoc($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +37,19 @@
    <div id="user_content" class="col-md-8 rounded border border-dark mb-3">
    <div class="" >
    <img src="images/user_user_photo.png" alt="err" class="img-thumbnail float-right">
-   <p class="ml-3 mt-4 p-1 col-md-4"><b>Фамилия:</b> Тестовая_фамилия</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> Тестовое_имя</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Отчество:</b> Тестовое_отчество</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Дата рождения:</b> 08.06.2008</p> <!--Добавлено-->
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Пол:</b> Мужской</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Гражданство:</b> Казах</p>
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Страна:</b> Россия</p><!--Добавлено-->
-   <p class="ml-3 mt-2 p-1 col-md-4"><b>Город:</b> Москва</p><!--Добавлено-->
-   <p class="ml-3 mt-2 p-1 col-md-12"><b>Адрес проживания:</b> улицафылоыврпоф, районфыдоарвыпывопл, дом54, кв54</p>
-   <p class="ml-3 mt-2 p-1 col-md-6"><b>Удостоверение личности:</b> Паспорт</p>
-   <p class="ml-3 mt-2 p-1 col-md-2"><b>Серия:</b> AH</p>
-   <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> 547645</p>
-   <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> 21.05.2018</p><!--Добавлено-->
+   <p class="ml-3 mt-4 p-1 col-md-4"><b>Фамилия:</b> <?php echo $citizen['L_name']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> <?php echo $citizen['F_name']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Отчество:</b> <?php echo $citizen['patronymic']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Дата рождения:</b> <?php echo $citizen['Date']; ?></p> <!--Добавлено-->
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Пол:</b> <?php echo $citizen['gender'] == 1 ? 'Мужской' : 'Женский'; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Гражданство:</b> <?php echo $citizen['nationality']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Страна:</b> <?php echo $citizen['country']; ?></p><!--Добавлено-->
+   <p class="ml-3 mt-2 p-1 col-md-4"><b>Город:</b> <?php echo $citizen['city']; ?></p><!--Добавлено-->
+   <p class="ml-3 mt-2 p-1 col-md-12"><b>Адрес проживания:</b> <?php echo $citizen['adress']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-6"><b>Удостоверение личности:</b> <?php echo $citizen['iden']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-2"><b>Серия:</b> <?php echo $citizen['serial']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> <?php echo $citizen['number']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> <?php echo $citizen['date_register']; ?></p><!--Добавлено-->
    <div class="d-flex mb-3">
    <button type="submit" class="btn btn-outline-dark col-md-3">Изменить</button>
    <button type="submit" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</button>

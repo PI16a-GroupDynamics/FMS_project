@@ -1,3 +1,9 @@
+<?php
+include_once('includes/connect.php');
+if ($_SESSION['loged_user']==0)//проверка на авторизацию
+    header('Location: ' . 'login.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

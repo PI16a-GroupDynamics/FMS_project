@@ -1,7 +1,7 @@
 <?php
-include_once('includes/connect.php');//подключеение к БД
+  include_once('includes/connect.php');//подключеение к БД
   if ($_SESSION['loged_user']==0)//проверка на авторизацию
-header('Location: ' . 'login.php');
+    header('Location: ' . 'login.php');
   if(isset($_POST['Sorted']))//Сортировка
   {
     if(isset($_POST['M']))
@@ -28,13 +28,13 @@ header('Location: ' . 'login.php');
         $W.= " city_id = ".$_POST['cities'];
     }
   }
-    if(isset($_POST['Search']))//Поиск по фамилии
+  if(isset($_POST['Search']))//Поиск по фамилии
+  {
+    if (strlen($_POST['Search_text'])!=0)
     {
-      if (strlen($_POST['Search_text'])!=0)
-      {
-        $W="WHERE F_name='".$_POST['Search_text']."'";
-      }
+      $W="WHERE F_name='".$_POST['Search_text']."'";
     }
+  }
 ?>
 
 <!DOCTYPE html>

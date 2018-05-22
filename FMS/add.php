@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once('includes/connect.php');
 
   if ($_SESSION['loged_user']==0)//проверка на авторизацию
@@ -10,7 +10,7 @@ if(isset($_POST['Add_citizen']))
   {
   $last=$row[0]+1;
   }
-
+  //echo basename($_FILES['photo']['name']);
   $city_id = $_POST['cities'];//считывание полей
   $serial=$_POST['serial'];
   $number=$_POST['number'];

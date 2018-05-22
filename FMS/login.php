@@ -1,8 +1,9 @@
-﻿<?php
+<?php
 include_once('includes/connect.php');
-  if ($_GET['t']==0)//проверка на авторизацию
+  if ($_GET['t']==0 && $_SESSION['log_id']!=0)//проверка на авторизацию
     {
       $_SESSION['loged_user']=0;
+      //echo "UPDATE `log` SET date_f ='".date("Y-m-d H:i:s")."' WHERE id = ".$_SESSION['log_id'];
       mysqli_query($link, "UPDATE `log` SET date_f ='".date("Y-m-d H:i:s")."' WHERE id = ".$_SESSION['log_id']);
        $_SESSION['log_id']=0;
     }
@@ -20,7 +21,7 @@ if(isset($_POST['logon']))//нажатие на кнопку "Войти"
       $_SESSION['loged_user']=1;
       $_SESSION['id']=$user_data[0];
       $_SESSION['login']=$user_data[1];
-$result1 = mysqli_query($link, "SELECT id FROM `log` ORDER BY id");//
+    $result1 = mysqli_query($link, "SELECT id FROM `log` ORDER BY id");
     $last=0;
    while(($row=mysqli_fetch_array($result1))!=null)
     {

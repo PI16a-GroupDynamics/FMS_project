@@ -33,12 +33,12 @@
     font-size: 13pt;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   .main_view_table_vertical{
     height: 555px !important;
     overflow: scroll;
   }
- 
+
   .hover_cursor_class:hover{
-	  cursor:pointer;
+    cursor:pointer;
   }
