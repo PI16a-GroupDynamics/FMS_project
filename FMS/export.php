@@ -28,8 +28,8 @@
 
 	$pdf->SetTitle('PDF');
 	$pdf->Cell(0, 15, "Информация о физическом лице", 0, 0, 'C');
-	$pdf->Write(15, 'Фамилия: ' . $citizen['L_name'] . "\n");
-	$pdf->Write(15, 'Имя: ' . $citizen['F_name'] . "\n");
+	$pdf->Write(15, 'Фамилия: ' . $citizen['F_name'] . "\n");
+	$pdf->Write(15, 'Имя: ' . $citizen['L_name'] . "\n");
 	$pdf->Write(15, 'Отчество: ' . $citizen['patronymic'] . "\n");
 	$pdf->Write(15, 'Дата рождения: ' . $citizen['Date'] . "\n");
 	$pdf->Write(15, 'Пол: ' . ($citizen['gender'] == 1 ? 'Мужской' : 'Женский') . "\n");
