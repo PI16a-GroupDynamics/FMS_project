@@ -41,7 +41,7 @@
 	$pdf->Write(15, 'Серия: ' . $citizen['serial'] . "\n");
 	$pdf->Write(15, 'Номер: ' . $citizen['number'] . "\n");
 	$pdf->Write(15, 'Дата регистрации: ' . $citizen['date_register']);
-	$pdf->Image($citizen['photo'], 120, 30, 70);	// Изображение физического лица
+	$pdf->Image($citizen['photo'] == null ? "images/default.jpg" : $citizen['photo'], 120, 30, 70);	// Изображение физического лица
 
 	$pdf->Output("report.pdf", "I");	// Вывод PDF-документа
 ?>

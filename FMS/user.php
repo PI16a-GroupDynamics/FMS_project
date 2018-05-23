@@ -36,7 +36,7 @@ $citizen = mysqli_fetch_assoc($query);
    ?>
    <div id="user_content" class="col-md-8 rounded border border-dark mb-3">
    <div class="" >
-   <img src=<?php echo $citizen['photo']; ?> alt="err" class="img-thumbnail float-right" width="160" height="160">
+   <img src=<?php echo $citizen['photo'] == null ? "images/default.png" : $citizen['photo']; ?> alt="err" class="img-thumbnail float-right" width="160" height="160">
    <p class="ml-3 mt-4 p-1 col-md-4"><b>Фамилия:</b> <?php echo $citizen['F_name']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> <?php echo $citizen['L_name']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Отчество:</b> <?php echo $citizen['patronymic']; ?></p>
