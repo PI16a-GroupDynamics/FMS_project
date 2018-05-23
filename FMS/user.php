@@ -51,8 +51,8 @@ $citizen = mysqli_fetch_assoc($query);
    <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> <?php echo $citizen['number']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> <?php echo $citizen['date_register']; ?></p><!--Добавлено-->
    <div class="d-flex mb-3">
-   <a href="edit.php" class="btn btn-outline-dark col-md-3">Изменить</a>
-   <a href="export.php" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</a>
+   <a href=<?php echo 'edit.php?id=' . $_GET['id']; ?> class="btn btn-outline-dark col-md-3">Изменить</a>
+   <a href=<?php echo 'export.php?id=' . $_GET['id']; ?> target="_blank" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</a>
    </div>
    </div>
    </div>
