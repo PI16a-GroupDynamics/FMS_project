@@ -5,6 +5,6 @@
     </div>
     <div class="col-md-3 d-flex">
     <p id="header_username" class="align-self-center order-3 p-2 text-right col-10">Здравствуйте, <?php echo $_SESSION['login'] ?></p>
-    <a id="header_logout" href="#" class="align-self-center order-4 text-center col-2"><img src="images/header_logout.png" alt="err" class="mb-3"></a>
+    <a id="header_logout" href="login.php" class="align-self-center order-4 text-center col-2"><img src="images/header_logout.png" alt="err" class="mb-3"></a>
     </div>
     </header>
