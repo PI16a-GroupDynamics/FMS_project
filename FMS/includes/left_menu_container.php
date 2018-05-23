@@ -20,7 +20,7 @@ function MkHouseValues(index, name){
     }
 }
 </script>
-<form name="sort" method="POST">
+<form name="sort" method="POST" action="main.php">
 
 <div class="input-group mb-3">
   <input type="text" name="Search_text" class="form-control border-dark" placeholder="Поиск">
