@@ -20,7 +20,9 @@ if(isset($_POST['Add_citizen']))
   $Identification_id=$_POST['Identification_id'];
 
   $date_register=date("Y-m-d"); 
-}
+  $result = mysql_query("UPDATE`citizen` SET `serial` ='".$serial."', `number`= ".$number.", `F_name` = '".$F_name."', `L_name` ='".$L_name."', `Patronymic`='".$Patronymic."', `Gender`=".$Gender.", `Date`='".$Date."', `Nationality`='".$Nationality."', `adress`='".$adress."', `Identification_id`=".$Identification_id.", `city_id`=".$city_id." WHERE id =".$id.")";
+");
+
 if ($_FILES['add_photo']['size']>0)
 {
 
@@ -28,6 +30,7 @@ if ($_FILES['add_photo']['size']>0)
   mysqli_query($link, "UPDATE `citizen` SET photo ='images/".$id.".png"."' WHERE id=".$id);
 }
     header('Location: ' . 'main.php');
+  }
 ?>
 <script>
 function MkHouseValues(index, name){
