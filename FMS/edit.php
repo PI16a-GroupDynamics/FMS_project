@@ -25,8 +25,13 @@ if(isset($_POST['Add_citizen']))
 if ($_FILES['add_photo']['size']>0)
 {
 
-  copy($_FILES['add_photo']['tmp_name'], "images/".$id.".png");
-  mysqli_query($link, "UPDATE `citizen` SET photo ='images/".$id.".png"."' WHERE id=".$id);
+$ext = substr($_FILES['add_photo']['name'], 1 + strrpos($_FILES['add_photo']['name'], "."));
+if (in_array($ext,array('jpeg','jpe','jpg','JPG','JPEG','JPE'))) $p = 'jpeg';
+if (in_array($ext,array('gif','GIF'))) $p = 'gif';
+if (in_array($ext,array('png','PNG'))) $p = 'png';
+
+  copy($_FILES['add_photo']['tmp_name'], "images/".$id.".".$p);
+  mysqli_query($link, "UPDATE `citizen` SET photo ='images/".$id.".".$p."' WHERE id=".$id);
 }
     header('Location: ' . 'main.php');
   }
