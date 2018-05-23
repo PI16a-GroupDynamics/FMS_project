@@ -1,7 +1,15 @@
 <?php
-include_once('includes/connect.php');
-if ($_SESSION['loged_user']==0)//проверка на авторизацию
+  include_once('includes/connect.php');
+  if ($_SESSION['loged_user']==0) {//проверка на авторизацию
     header('Location: ' . 'login.php');
+    exit();
+  }
+
+  // Запрос на получение лога посещений
+  $query = mysqli_query($link,
+    "SELECT login, date_s, date_f FROM log
+    INNER JOIN users ON log.user_id = users.id
+    ORDER BY date_s DESC");
 ?>
 
 <!DOCTYPE html>
@@ -34,27 +42,13 @@ if ($_SESSION['loged_user']==0)//проверка на авторизацию
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Otffffffffffffffto</td>
-      <td>05.04.2018 15:30</td>
-      <td>05.04.2018 16:28</td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>05.04.2018 15:30</td>
-      <td>05.04.2018 16:28</td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>05.04.2018 15:30</td>
-      <td>05.04.2018 16:28</td>
-    </tr>
-    <tr>
-      <td>Thornton</td>
-      <td>05.04.2018 15:30</td>
-      <td>05.04.2018 16:28</td>
-    </tr>
-    
+    <?php // Вывод каждой строки из таблицы
+      while ( ($log = mysqli_fetch_assoc($query)) ) {
+        echo '<tr><td>' . $log['login'] . '</td>';
+        echo '<td>' . $log['date_s'] . '</td>';
+        echo '<td>' . $log['date_f'] . '</td></tr>';
+      }
+    ?>
   </tbody>
 </table>
 </div>

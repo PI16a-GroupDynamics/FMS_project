@@ -8,8 +8,8 @@ if ($_SESSION['loged_user']==0) {//проверка на авторизацию
 // Запрос на получение информации о клиенте
 $query = mysqli_query($link,
   "SELECT serial, number, F_name, L_name, patronymic, gender, Date, nationality, adress, date_register, photo, identification.value AS iden, cities.value AS city, countries.value AS country
-FROM citizen, cities, countries, identification
-WHERE citizen.id = " . $_GET['id'] . " and identification.id = citizen.identification_id and citizen.city_id = cities.id and cities.country_id = countries.id");
+  FROM citizen, cities, countries, identification
+  WHERE citizen.id = " . $_GET['id'] . " and identification.id = citizen.identification_id and citizen.city_id = cities.id and cities.country_id = countries.id");
 
 $citizen = mysqli_fetch_assoc($query);
 
@@ -36,7 +36,7 @@ $citizen = mysqli_fetch_assoc($query);
    ?>
    <div id="user_content" class="col-md-8 rounded border border-dark mb-3">
    <div class="" >
-   <img src="images/user_user_photo.png" alt="err" class="img-thumbnail float-right">
+   <img src=<?php echo $citizen['photo']; ?> alt="err" class="img-thumbnail float-right" width="160" height="160">
    <p class="ml-3 mt-4 p-1 col-md-4"><b>Фамилия:</b> <?php echo $citizen['L_name']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Имя:</b> <?php echo $citizen['F_name']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4"><b>Отчество:</b> <?php echo $citizen['patronymic']; ?></p>
@@ -51,8 +51,8 @@ $citizen = mysqli_fetch_assoc($query);
    <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> <?php echo $citizen['number']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> <?php echo $citizen['date_register']; ?></p><!--Добавлено-->
    <div class="d-flex mb-3">
-   <a href="#" class="btn btn-outline-dark col-md-3">Изменить</a>
-   <a href="#" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</a>
+   <a href="edit.php" class="btn btn-outline-dark col-md-3">Изменить</a>
+   <a href="export.php" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</a>
    </div>
    </div>
    </div>

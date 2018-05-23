@@ -87,7 +87,7 @@
       echo "<td>".$row[1]."</td>";
       echo "<td>".$row[2]."</td>";  
       echo "<td>".$row[3]." </td>";
-      echo "<td>"; if ($row[4]=1) echo "М"; else echo "Ж"; 
+      echo "<td>"; if ($row[4]==1) echo "М"; else echo "Ж"; 
       echo " </td>";
       echo "<td>".$row[5]." </td>"; 
       echo "<td>".$row[6]."</td>";
