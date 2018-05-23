@@ -4,6 +4,11 @@ include_once('includes/connect.php');
   if ($_SESSION['loged_user']==0)//проверка на авторизацию
     header('Location: ' . 'login.php');
 $id = $_GET['id'];
+if(isset($_POST['Delete_citizen']))
+{ 
+  $result = mysqli_query($link,"DELETE FROM `citizen` WHERE id =".$id);
+  header('Location: ' . 'main.php');
+}
 if(isset($_POST['Add_citizen']))
 { 
   
@@ -185,6 +190,7 @@ function MkHouseValues(index, name){
   </div>
 </div>
 <button type="submit" name="Add_citizen" class="btn btn-outline-dark col-md-6 offset-md-3 mb-3">Изменить</button>
+<button type="submit" name="Delete_citizen" class="btn btn-outline-dark col-md-6 offset-md-3 mb-3">Удалить</button>
 </form>
    </div>
    </div>
