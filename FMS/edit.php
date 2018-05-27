@@ -12,20 +12,24 @@ if(isset($_POST['Delete_citizen']))
 if(isset($_POST['Add_citizen']))
 { 
   
-  $city_id = $_POST['cities'];//считывание данных
+  mysqli_set_charset($link,'utf8');
+  $city_id = $_POST['cities'];//считывание полей
   $serial=$_POST['serial'];
   $number=$_POST['number'];
   $F_name=$_POST['F_name'];
   $L_name=$_POST['L_name'];
+  $m_status=$_POST['m_status'];
   $Patronymic=$_POST['Patronymic'];
   $Gender=$_POST['sex_client'];
   $Date=$_POST['Date'];
+  $birthplace=$_POST['birthplace'];
   $Nationality=$_POST['Nationality'];
   $adress=$_POST['adress'];
   $Identification_id=$_POST['Identification_id'];
+  $date_register=date("Y-m-d"); 
 
   $date_register=date("Y-m-d"); 
-  $result = mysqli_query($link,"UPDATE`citizen` SET `serial` ='".$serial."', `number`= ".$number.", `F_name` = '".$F_name."', `L_name` ='".$L_name."', `Patronymic`='".$Patronymic."', `Gender`=".$Gender.", `Date`='".$Date."', `Nationality`='".$Nationality."', `adress`='".$adress."', `Identification_id`=".$Identification_id.", `city_id`=".$city_id." WHERE id =".$id);
+  $result = mysqli_query($link,"UPDATE`citizen` SET `serial` ='".$serial."', `number`= ".$number.", `F_name` = '".$F_name."', `L_name` ='".$L_name."', `Patronymic`='".$Patronymic."', `Gender`=".$Gender.", `Date`='".$Date."', `Nationality`='".$Nationality."', `adress`='".$adress."', `Identification_id`=".$Identification_id.", `city_id`=".$city_id.", `subdivision_id` =".$_SESSION['subdivision_id'].", `m_status_id`=".$m_status.", `birthplace` = '".$birthplace."' WHERE id =".$id);
 
 if ($_FILES['add_photo']['size']>0)
 {
@@ -81,24 +85,28 @@ function MkHouseValues(index, name){
    ?>
    <div id="add_content" class="col-md-8 rounded border border-dark mb-3">
  <form method ="POST" enctype="multipart/form-data" name="add">
-  <?php $result = mysqli_query($link, "SELECT F_name, L_name, Patronymic, Gender, Date, Nationality, countries.id, cities.id, adress, Identification_id, serial, number, citizen.id  FROM `citizen` LEFT JOIN cities ON cities.id=citizen.city_id LEFT JOIN countries ON countries.id=cities.country_id WHERE citizen.id=".$_GET['id']);
+  <?php $result = mysqli_query($link, "SELECT F_name, L_name, Patronymic, Gender, Date, Nationality, countries.id, cities.id, adress, Identification_id, serial, number, citizen.id, m_status_id, birthplace   FROM `citizen` LEFT JOIN cities ON cities.id=citizen.city_id LEFT JOIN countries ON countries.id=cities.country_id WHERE citizen.id=".$_GET['id']);
   $row=mysqli_fetch_array($result);
    ?>
  <div class="form-group d-flex mt-3" >
  <label for="add_surname" class="col-md-3 mt-2">Фамилия:</label>
-<input type="text" name="F_name" required minlength="3" value=<?php echo "'".$row[0]."'"; ?> class="form-control col-md-9 border-dark" id="add_surname">
+<input type="text" name="F_name" pattern="[А-Я]{1}[а-я]+$" required minlength="3" value=<?php echo "'".$row[0]."'"; ?> class="form-control col-md-9 border-dark" id="add_surname">
  </div>
  <div class="form-group d-flex mt-3" >
  <label for="add_name" class="col-md-3 mt-2">Имя:</label>
-<input type="text" name="L_name" required minlength="3" value=<?php echo "'".$row[1]."'"; ?> class="form-control col-md-9 border-dark" id="add_name">
+<input type="text" name="L_name" pattern="[А-Я]{1}[а-я]+$" required minlength="3" value=<?php echo "'".$row[1]."'"; ?> class="form-control col-md-9 border-dark" id="add_name">
  </div>
  <div class="form-group d-flex mt-3" >
  <label for="add_middle_name"  class="col-md-3 mt-2">Отчество:</label>
-<input type="text" name="Patronymic" value=<?php echo "'".$row[2]."'"; ?> required minlength="3" class="form-control col-md-9 border-dark" id="add_middle_name">
+<input type="text" name="Patronymic" pattern="[А-Я]{1}[а-я]+$" value=<?php echo "'".$row[2]."'"; ?> required minlength="3" class="form-control col-md-9 border-dark" id="add_middle_name">
  </div>
  <div class="form-group d-flex mt-3" >
  <label for="add_middle_name"  class="col-md-3 mt-2">Дата рождения:</label>
-<input type="date" name="Date" value=<?php echo "'".$row[4]."'"; ?> required class="form-control col-md-5 border-dark" id="add_middle_name">
+<input type="date" name="Date" min="1900-01-01" max=<?php echo date('Y-m-d');?> value=<?php echo "'".$row[4]."'"; ?> required class="form-control col-md-5 border-dark" id="add_middle_name">
+ </div>
+   <div class="form-group d-flex mt-3">
+ <label for="adress" class="col-md-3 mt-2">Место рождения:</label>
+<input type="text" minlength="3" required name="birthplace" value=<?php echo "'".$row[14]."'"; ?> class="form-control col-md-9 border-dark" id="add_adress">
  </div>
  <div class="input-group d-flex mt-3" >
 <p class="col-3 mb-3">Пол:</p>
@@ -115,8 +123,25 @@ function MkHouseValues(index, name){
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-3 mt-2">Гражданство:</label>
-<input type="text" minlength="3" value=<?php echo "'".$row[5]."'"; ?> required name="Nationality" class="form-control col-md-9 border-dark" id="add_nationality">
+<input type="text" minlength="3"  pattern="[А-Я]{1}[а-я]+$" value=<?php echo "'".$row[5]."'"; ?> required name="Nationality" class="form-control col-md-9 border-dark" id="add_nationality">
  </div>
+   <div class="form-group d-flex mt-3">
+ <label for="add_country" class="col-md-3 mt-2">Семейное положение:</label>
+<div class="input-group mb-3">
+
+<select name="m_status" class="form-control rounded border-dark col-md-6 offset-md-1">
+   <?php
+    $result1 = mysqli_query($link, "SELECT * FROM `m_status`");//вывод городов
+   while(($row1=mysqli_fetch_array($result1))!=null)
+   {
+     if ($row1[0] == $row[13])
+    echo "<option selected value=".$row1[0].">".$row1[1]."</option>";
+  else
+    echo "<option value=".$row1[0].">".$row1[1]."</option>";
+  }
+   ?>
+</select>
+</div> </div>
   <div class="form-group d-flex mt-3">
  <label for="add_country" class="col-md-3 mt-2">Страна проживания:</label>
 <div class="input-group mb-3">
@@ -179,9 +204,10 @@ function MkHouseValues(index, name){
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-2 mt-2">Серия:</label>
-<input type="text" name="serial" required minlength="2" maxlength="4" value=<?php echo "'".$row[10]."'"; ?> class="form-control col-md-2 border-dark" id="add_nationality">
+<input type="text" name="serial" required pattern="[А-Я]{2,4}" required minlength="2" maxlength="4" value=<?php echo "'".$row[10]."'"; ?> class="form-control col-md-2 border-dark" id="add_nationality">
 <label for="add_nationality" class="col-md-2 mt-2 offset-md-1">Номер:</label>
-<input type="number" name="number" required minlength="6" maxlength="6" value=<?php echo "'".$row[11]."'"; ?> class="form-control col-md-3 border-dark" id="add_nationality">
+
+<input type="text" name="number" pattern="[0-9]{6}" value=<?php echo "'".$row[11]."'"; ?> required  class="form-control col-md-3 border-dark" id="add_nationality">
  </div>
  <div class="input-group mb-3">
   <div class="custom-file">

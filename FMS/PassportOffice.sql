@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 19 2018 г., 19:07
+-- Время создания: Май 27 2018 г., 11:43
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -64,16 +64,11 @@ CREATE TABLE `citizen` (
   `Identification_id` int(2) NOT NULL,
   `photo` varchar(100) NOT NULL,
   `date_register` date NOT NULL,
-  `city_id` int(11) NOT NULL
+  `city_id` int(11) NOT NULL,
+  `m_status_id` int(11) NOT NULL,
+  `subdivision_id` int(11) NOT NULL,
+  `birthplace` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `citizen`
---
-
-INSERT INTO `citizen` (`id`, `serial`, `number`, `F_name`, `L_name`, `Patronymic`, `Gender`, `Date`, `Nationality`, `adress`, `Identification_id`, `photo`, `date_register`, `city_id`) VALUES
-(1, 'ВТ', 3245567, 'Иванов', 'Петр', 'Максимович', 1, '1990-05-07', 'Русский', 'ул. Ленина, 14', 3, '', '2018-05-14', 8),
-(2, 'ВТ', 765479, 'Иванова', 'Инна', 'Александровна', 1, '2018-05-11', 'Русская', 'ул. Ленина, 12', 1, 'images/2.png', '2018-05-19', 1);
 
 -- --------------------------------------------------------
 
@@ -126,31 +121,44 @@ CREATE TABLE `log` (
   `date_f` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Дамп данных таблицы `log`
+-- Структура таблицы `m_status`
 --
 
-INSERT INTO `log` (`id`, `user_id`, `date_s`, `date_f`) VALUES
-(1, 1, '2018-05-19 18:24:55', '0000-00-00 00:00:00'),
-(2, 1, '2018-05-19 18:25:43', '0000-00-00 00:00:00'),
-(3, 1, '2018-05-19 18:26:52', '0000-00-00 00:00:00'),
-(4, 1, '2018-05-19 18:28:38', '0000-00-00 00:00:00'),
-(5, 1, '2018-05-19 18:30:01', '0000-00-00 00:00:00'),
-(6, 1, '2018-05-19 18:31:42', '0000-00-00 00:00:00'),
-(7, 1, '2018-05-19 18:31:44', '0000-00-00 00:00:00'),
-(8, 1, '2018-05-19 18:32:25', '0000-00-00 00:00:00'),
-(9, 1, '2018-05-19 18:32:33', '0000-00-00 00:00:00'),
-(10, 1, '2018-05-19 18:32:44', '2018-05-19 18:32:51'),
-(11, 1, '2018-05-19 18:33:40', '0000-00-00 00:00:00'),
-(12, 1, '2018-05-19 18:33:50', '2018-05-19 18:34:01'),
-(13, 1, '2018-05-19 18:34:02', '2018-05-19 18:34:08'),
-(14, 1, '2018-05-19 18:37:57', '2018-05-19 18:39:01'),
-(15, 1, '2018-05-19 18:39:02', '2018-05-19 18:39:56'),
-(16, 1, '2018-05-19 18:39:58', '2018-05-19 18:40:26'),
-(17, 1, '2018-05-19 18:40:29', '2018-05-19 18:50:06'),
-(18, 1, '2018-05-19 18:45:50', '2018-05-19 18:46:57'),
-(19, 1, '2018-05-19 18:46:58', '0000-00-00 00:00:00'),
-(20, 1, '2018-05-19 18:50:07', '0000-00-00 00:00:00');
+CREATE TABLE `m_status` (
+  `id` int(11) NOT NULL,
+  `value` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `m_status`
+--
+
+INSERT INTO `m_status` (`id`, `value`) VALUES
+(1, 'Не замужем/не женат'),
+(2, 'Разведен/разведена'),
+(3, 'Замужем/женат');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `subdivision`
+--
+
+CREATE TABLE `subdivision` (
+  `id` int(11) NOT NULL,
+  `adress` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `subdivision`
+--
+
+INSERT INTO `subdivision` (`id`, `adress`) VALUES
+(1, 'Донецк'),
+(2, 'Макеевка');
 
 -- --------------------------------------------------------
 
@@ -161,16 +169,18 @@ INSERT INTO `log` (`id`, `user_id`, `date_s`, `date_f`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(60) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `salt` varchar(30) NOT NULL
+  `password` varchar(150) NOT NULL,
+  `salt` varchar(30) NOT NULL,
+  `subdivision_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `salt`) VALUES
-(1, 'admin@mail.ru', '2b816535a62660f12572603cda9ae0aa', 'JaiwZXWG60');
+INSERT INTO `users` (`id`, `login`, `password`, `salt`, `subdivision_id`) VALUES
+(7, 'admin', '7ddab5682b7ebeac8b428a0f3641d07f', 'sflprt49fhi2', 1),
+(8, 'admin@mail.ru', '94f20f870a7599c296098a33ed9b95b0', 'sjtf4Eadgg1', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -189,7 +199,9 @@ ALTER TABLE `cities`
 ALTER TABLE `citizen`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Identification_id` (`Identification_id`),
-  ADD KEY `city_id` (`city_id`);
+  ADD KEY `city_id` (`city_id`),
+  ADD KEY `m_status_id` (`m_status_id`),
+  ADD KEY `subdivision_id` (`subdivision_id`);
 
 --
 -- Индексы таблицы `countries`
@@ -211,10 +223,24 @@ ALTER TABLE `log`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Индексы таблицы `m_status`
+--
+ALTER TABLE `m_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `subdivision`
+--
+ALTER TABLE `subdivision`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD KEY `subdivision_id` (`subdivision_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -230,7 +256,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT для таблицы `citizen`
 --
 ALTER TABLE `citizen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `countries`
@@ -248,13 +274,25 @@ ALTER TABLE `identification`
 -- AUTO_INCREMENT для таблицы `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT для таблицы `m_status`
+--
+ALTER TABLE `m_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `subdivision`
+--
+ALTER TABLE `subdivision`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -271,13 +309,21 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `citizen`
   ADD CONSTRAINT `citizen_ibfk_1` FOREIGN KEY (`Identification_id`) REFERENCES `identification` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `citizen_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `citizen_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citizen_ibfk_3` FOREIGN KEY (`m_status_id`) REFERENCES `m_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `citizen_ibfk_4` FOREIGN KEY (`subdivision_id`) REFERENCES `subdivision` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `log`
 --
 ALTER TABLE `log`
   ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`subdivision_id`) REFERENCES `subdivision` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
