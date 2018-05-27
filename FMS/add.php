@@ -10,6 +10,8 @@ if(isset($_POST['Add_citizen']))
   {
   $last=$row[0]+1;
   }
+  if(mysqli_num_rows($result)==0)
+  $last=0;
   mysqli_set_charset($link,'utf8');
   $city_id = $_POST['cities'];//считывание полей
   $serial=$_POST['serial'];
