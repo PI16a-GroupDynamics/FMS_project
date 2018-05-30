@@ -204,7 +204,7 @@ function MkHouseValues(index, name){
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-2 mt-2">Серия:</label>
-<input type="text" name="serial" required pattern="[0-9]{2} [0-9]{2}" required minlength="2" maxlength="4" value=<?php echo "'".$row[10]."'"; ?> class="form-control col-md-2 border-dark" id="add_nationality">
+<input type="text" name="serial" required pattern="[0-9]{2} [0-9]{2}" required minlength="5" maxlength="5" value=<?php echo "'".$row[10]."'"; ?> class="form-control col-md-2 border-dark" id="add_nationality">
 <label for="add_nationality" class="col-md-2 mt-2 offset-md-1">Номер:</label>
 
 <input type="text" name="number" pattern="[0-9]{6}" minlength="6" maxlength="6" pattern="[0-9]{6}" value=<?php echo "'".$row[11]."'"; ?> required  class="form-control col-md-3 border-dark" id="add_nationality">
