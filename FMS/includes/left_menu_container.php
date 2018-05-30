@@ -46,7 +46,7 @@ function MkHouseValues(index, name){
 
 <div class="input-group mb-3">
 <p id="left_menu_age_name" class="col-4 align-center mt-2">Возраст:</p>
-<input type="number" name ="old" min="0" max="150" class="form-control rounded col-md-3 offset-md-1 mb-1  border-dark">
+<input type="number" name ="old" min="0" max="120" class="form-control rounded col-md-3 offset-md-1 mb-1  border-dark">
 </div>
 <div class="input-group mb-3">
 <p class="col-4 align-center mt-2">Страна:</p>

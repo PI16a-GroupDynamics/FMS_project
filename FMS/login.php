@@ -21,6 +21,7 @@ if(isset($_POST['logon']))//нажатие на кнопку "Войти"
       $_SESSION['loged_user']=1;
       $_SESSION['id']=$user_data[0];
       $_SESSION['login']=$user_data[1];
+      $_SESSION['subdivision_id']=$user_data[4];
     $result1 = mysqli_query($link, "SELECT id FROM `log` ORDER BY id");
     $last=0;
    while(($row=mysqli_fetch_array($result1))!=null)
