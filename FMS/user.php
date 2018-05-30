@@ -53,7 +53,7 @@ $citizen = mysqli_fetch_assoc($query);
    <p class="ml-3 mt-2 p-1 col-md-3"><b>Номер:</b> <?php echo $citizen['number']; ?></p>
    <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Дата регистрации:</b> <?php echo $citizen['date_register']; ?></p><!--Добавлено-->
    <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Место выдачи паспорта:</b> <?php echo $citizen['sub_adr']; ?></p>
-   <p class="ml-3 mt-2 p-1 col-md-5 mb-3"><b>Код места выдачи паспорта:</b> <?php echo $citizen['sub_id']; ?></p>
+   <p class="ml-3 mt-2 p-1 col-md-4 mb-3"><b>Код подразделения:</b> <?php echo $citizen['sub_id']; ?></p>
    <div class="d-flex mb-3">
    <a href=<?php echo 'edit.php?id=' . $_GET['id']; ?> class="btn btn-outline-dark col-md-3">Изменить</a>
    <a href=<?php echo 'export.php?id=' . $_GET['id']; ?> target="_blank" class="btn btn-outline-dark col-md-5 offset-md-4">Экспортировать в PDF</a>
