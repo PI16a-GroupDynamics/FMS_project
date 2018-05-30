@@ -116,7 +116,7 @@ function MkHouseValues(index, name){
   <label class="form-check-label" for="add_sex_m">Мужской</label>
 </div>
 <div class="form-check form-check-inline mb-3">
-  <input class="form-check-input" name="sex_client" type="radio" id="add_sex_w" <?php if($row[3]=0) echo "checked='true'"; ?>  value="0">
+  <input class="form-check-input" name="sex_client" type="radio" id="add_sex_w" <?php if($row[3]==0) echo "checked='true'"; ?>  value="0">
   <label class="form-check-label" for="add_sex_w">Женский</label>
 </div>
 </div>  

@@ -23,7 +23,7 @@ function MkHouseValues(index, name){
 <form name="sort" method="POST" action="main.php">
 
 <div class="input-group mb-3">
-  <input type="text" name="Search_text" class="form-control border-dark" placeholder="Поиск">
+  <input type="text" pattern="[А-Я]{1}[а-я]+$" name="Search_text" class="form-control border-dark" placeholder="Поиск">
   <div class="input-group-append">
     <button type="submit" name="Search" class="btn btn-outline-dark" type="button"><img src="images/left_menu_monotone_search_zoom.png" alt="err"></button>
   </div>
@@ -46,7 +46,7 @@ function MkHouseValues(index, name){
 
 <div class="input-group mb-3">
 <p id="left_menu_age_name" class="col-4 align-center mt-2">Возраст:</p>
-<input type="number" name ="old" class="form-control rounded col-md-3 offset-md-1 mb-1  border-dark">
+<input type="number" name ="old" min="0" max="150" class="form-control rounded col-md-3 offset-md-1 mb-1  border-dark">
 </div>
 <div class="input-group mb-3">
 <p class="col-4 align-center mt-2">Страна:</p>
