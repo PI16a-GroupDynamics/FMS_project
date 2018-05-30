@@ -102,7 +102,7 @@ function MkHouseValues(index, name){
  </div>
   <div class="form-group d-flex mt-3">
  <label for="adress" class="col-md-3 mt-2">Место рождения:</label>
-<input type="text" minlength="3" required name="birthplace" class="form-control col-md-9 border-dark" id="add_adress">
+<input type="text" minlength="3" pattern="[А-Я]{1}[а-я]+$" required name="birthplace" class="form-control col-md-9 border-dark" id="add_adress">
  </div>
  <div class="input-group d-flex mt-3" >
 <p class="col-3 mb-3">Пол:</p>
@@ -181,7 +181,7 @@ function MkHouseValues(index, name){
  </div>
  <div class="form-group d-flex mt-3">
  <label for="add_nationality" class="col-md-2 mt-2">Серия:</label>
-<input type="text" name="serial" required pattern="[А-Я]{2,4}"  minlength="2" maxlength="4" class="form-control col-md-2 border-dark" id="add_nationality">
+<input type="text" name="serial" required pattern="[0-9]{3} [0-9]{3}"  minlength="2" maxlength="4" class="form-control col-md-2 border-dark" id="add_nationality">
 <label for="add_nationality"  class="col-md-2 mt-2 offset-md-1">Номер:</label>
 <input type="text" name="number" pattern="[0-9]{6}" required  class="form-control col-md-3 border-dark" id="add_nationality">
 
