@@ -73,6 +73,12 @@ function MkHouseValues(index, name){
 
 </select>
 </div>
+<div class="input-group mb-3">
+<p class="col-4 align-center">Семейное положение:</p>
+<select name="cities"" class="form-control rounded border-dark col-md-5 offset-md-2">
+	<option value="0"> Не выбирать</option>
+</select>
+</div>
 <button type="submit" name="Sorted" class="btn btn-outline-dark col-md-8 offset-md-2 mb-3">Сортировать</button>
 </div>
 
